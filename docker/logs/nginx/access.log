@@ -519,3 +519,13 @@
 =======
 172.18.0.1 - - [28/Sep/2022:13:38:01 +0000] "GET /_wdt/c8689b HTTP/1.1" 200 17595 "http://localhost/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
 >>>>>>> e80d73e5c931b38bc8f62beeae7d8bdec371e540
+172.20.0.1 - - [29/Sep/2022:12:42:35 +0000] "GET /register HTTP/1.1" 502 559 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+172.20.0.1 - - [29/Sep/2022:12:42:35 +0000] "GET /favicon.ico HTTP/1.1" 502 559 "http://localhost/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+172.20.0.1 - - [29/Sep/2022:12:43:44 +0000] "GET /register HTTP/1.1" 500 309288 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+172.20.0.1 - - [29/Sep/2022:12:43:49 +0000] "GET /_wdt/5287f8 HTTP/1.1" 200 18310 "http://localhost/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+172.20.0.1 - - [29/Sep/2022:12:44:05 +0000] "GET / HTTP/1.1" 200 59127 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+172.20.0.1 - - [29/Sep/2022:12:44:05 +0000] "GET /css/styleHome.css HTTP/1.1" 200 1124 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+172.20.0.1 - - [29/Sep/2022:12:44:05 +0000] "GET /js/animation.js HTTP/1.1" 200 1451 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+172.20.0.1 - - [29/Sep/2022:12:44:05 +0000] "GET /img/logo_noel.png HTTP/1.1" 200 226933 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+172.20.0.1 - - [29/Sep/2022:12:44:11 +0000] "GET /js/app.css HTTP/1.1" 404 275636 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+172.20.0.1 - - [29/Sep/2022:12:44:14 +0000] "GET /_wdt/4d84f7 HTTP/1.1" 200 16052 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
