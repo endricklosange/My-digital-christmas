@@ -1,11 +1,34 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Message{% endblock %}
+{% block css %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="{{ asset('css/styleNew.css') }}" rel="stylesheet">
+  <script type="module" src="js/animation.js"></script>
+{% endblock %}
 {% block body %}
-    <h1>Create new Message</h1>
+<div class="container-canvas">
+		<canvas id="canvas"></canvas>
+	</div>
+  <div class="newMessage">
+    <div class="main-card">
+      <img src="img/ab844b1c0ec9bdeb90ab2cfc0b7f2c99-removebg-preview.png" class="img-fluid" alt="...">
+      <h1 style="font-family: quicksand; font-weight: 600;" >Envoi ton message personnalisé</h1>
+      <div class="conteneur col-lg-offset-3 col-lg-7" style="font-family: quicksand;">
 
-    {{ include('message/_form.html.twig') }}
+      
+         {{ include('message/_form.html.twig') }}
 
     <a href="{{ path('app_message_index') }}">back to list</a>
+    
+      </div>
+
+    </div>
+
+
+
+   
 {% endblock %}
