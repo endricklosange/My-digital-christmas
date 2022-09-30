@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/message')]
 class MessageController extends AbstractController
 {
-    #[Route('/', name: 'app_message_index', methods: ['GET'])]
+    #[Route('/liste', name: 'app_message_index', methods: ['GET'])]
     public function index(MessageRepository $messageRepository): Response
     {
         return $this->render('message/index.html.twig', [
@@ -21,7 +21,7 @@ class MessageController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_message_new', methods: ['GET', 'POST'])]
+    #[Route('/', name: 'app_message_new', methods: ['GET', 'POST'])]
     public function new(Request $request, MessageRepository $messageRepository): Response
     {
         $user = $this->getUser();
