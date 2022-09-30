@@ -1,78 +1,62 @@
-
 body {
-    height: 100vh;
-    display: flex;
-    background-repeat: no-repeat;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-    overflow: hidden;
-  }
-  
-  .container-canvas {
-    position: absolute;
-    overflow: hidden;
-    pointer-events: none;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-  
-  .main-card {
-    margin: 0 auto;
-    position: relative;
-    border-radius: 10px;
-    display: flex;
-    padding: 20px 20px 20px 20px;
-    align-items: center;
-    flex-direction: column;
-  
-    background: #ffeded;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 25px;
-  }
-  .form-group {
-    font-size: 16px;
-  }
+  height: 100vh;
+  display: flex;
+  background-repeat: no-repeat;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+}
 
-  .main-card .candy-logo {
-    top: -90px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.container-canvas {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.main-card {
+  margin: 0 auto;
+  position: relative;
+  border-radius: 10px;
+  display: flex;
+  padding: 20px 20px 20px 20px;
+  align-items: center;
+  flex-direction: column;
+
+  background: #ffeded;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
+
+.btn {
+  border: none;
+  background: #ff4b4b !important;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  transition: 1s;
+}
+.btn:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 0.15rem #ff9999);
+  transition: 1s;
+}
+h1 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-family: Lato;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+@media (max-width: 700px) {
+  .main-card {
+    width: 80%;
   }
-  .form-group {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  .btn {
-    border: none;
-    background: #ff4b4b !important;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    transition: 1s;
-  }
-  .btn:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 0.15rem #ff9999);
-    transition: 1s;
-  }
-  h1 {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    font-family: Lato;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: center;
-  }
-  @media (max-width: 700px) {
-    .main-card {
-      width: 80%;
-    }
-  }
-  
+}
