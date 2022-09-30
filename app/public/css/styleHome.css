@@ -8,7 +8,7 @@
 body {
   background: linear-gradient(
     180deg,
-    #fedcdc 62.14%,
+    rgba(254, 220, 220, 1) 62.14%,
     rgba(217, 217, 217, 0) 100%
   );
   background-repeat: no-repeat;
@@ -22,6 +22,7 @@ body {
   height: 100vh;
   top: 0;
   left: 0;
+  z-index: -1;
 }
 
 .main-card {
@@ -29,7 +30,7 @@ body {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .button {
-  font-family: "Lato";
+  font-family: "Quicksand";
   font-style: normal;
   font-size: 14px;
   line-height: 18px;
@@ -39,8 +40,6 @@ body {
   color: #ffffff;
   font-weight: 600;
   background-color: #ff5959;
-  /* box-shadow: #ff9999 0px 0px 10px; */
-  box-shadow: #ff9999 0px 0px 10px;
   text-transform: uppercase;
   transition: 1s;
 }
@@ -52,6 +51,10 @@ body {
 section.container.d-flex.align-items-center.py-4 {
   height: 100vh;
 }
+.container{
+  opacity: 90%;
+}
+
 @media screen and (max-width: 768px) {
   .button {
     width: 70%;
