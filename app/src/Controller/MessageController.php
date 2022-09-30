@@ -9,11 +9,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/message')]
 class MessageController extends AbstractController
 {
-    #[Route('/liste', name: 'app_message_index', methods: ['GET'])]
+    /**
+    * @IsGranted("ROLE_ADMIN")
+    */
+   #[Route('/liste', name: 'app_message_index', methods: ['GET'])]
     public function index(MessageRepository $messageRepository): Response
     {
         return $this->render('message/index.html.twig', [
@@ -47,7 +51,9 @@ class MessageController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    /**
+    * @IsGranted("ROLE_ADMIN")
+    */
     #[Route('/{id}', name: 'app_message_show', methods: ['GET'])]
     public function show(Message $message): Response
     {
@@ -55,7 +61,9 @@ class MessageController extends AbstractController
             'message' => $message,
         ]);
     }
-
+    /**
+    * @IsGranted("ROLE_ADMIN")
+    */
     #[Route('/{id}/edit', name: 'app_message_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Message $message, MessageRepository $messageRepository): Response
     {
@@ -74,6 +82,9 @@ class MessageController extends AbstractController
         ]);
     }
 
+    /**
+    * @IsGranted("ROLE_ADMIN")
+    */
     #[Route('/{id}', name: 'app_message_delete', methods: ['POST'])]
     public function delete(Request $request, Message $message, MessageRepository $messageRepository): Response
     {
