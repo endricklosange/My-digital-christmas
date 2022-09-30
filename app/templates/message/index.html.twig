@@ -3,33 +3,35 @@
 {% block title %}Message index{% endblock %}
 
 {% block body %}
-    <h1>Message index</h1>
+  <h1>Message index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Contenu</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for message in messages %}
-            <tr>
-                <td>{{ message.id }}</td>
-                <td>{{ message.contenu }}</td>
-                <td>
-                    <a href="{{ path('app_message_show', {'id': message.id}) }}">show</a>
-                    <a href="{{ path('app_message_edit', {'id': message.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Auteur</th>
+        <th>Contenu</th>
+        <th>Destinataire</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for message in messages %}
+        <tr>
+          <td>{{ message.id }}</td>
+          <td>{{ message.author.email }}</td>
+          <td>{{ message.contenu }}</td>
+          <td>{{ message.receiver.email }}</td>
+          <td>
+            {{ include('message/_delete_form.html.twig') }}
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="3">no records found</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
-    <a href="{{ path('app_message_new') }}">Create new</a>
+  <a href="{{ path('app_message_new') }}">Create new</a>
 {% endblock %}
