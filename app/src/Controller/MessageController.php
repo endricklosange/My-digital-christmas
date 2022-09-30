@@ -24,14 +24,22 @@ class MessageController extends AbstractController
     #[Route('/new', name: 'app_message_new', methods: ['GET', 'POST'])]
     public function new(Request $request, MessageRepository $messageRepository): Response
     {
+        $user = $this->getUser();
+        // Si l'utilisateur a deja envoyer un message ou qu'il n'est pas connecter il sera rediriger vers la home
+        if($user->getMessage() || !$user){
+            return $this->redirectToRoute('app_home');
+        }
         $message = new Message();
+        $message->setAuthor($user);
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $messageRepository->save($message, true);
 
-            return $this->redirectToRoute('app_message_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_home', [
+                'message' => 'Message envoyé'
+            ], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('message/new.html.twig', [
