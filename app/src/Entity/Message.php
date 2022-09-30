@@ -18,11 +18,11 @@ class Message
 
     #[ORM\OneToOne(inversedBy: 'message', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $Auteur = null;
+    private ?User $author = null;
 
     #[ORM\ManyToOne(inversedBy: 'messages')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $Destinataire = null;
+    private ?User $receiver = null;
 
     public function getId(): ?int
     {
@@ -41,26 +41,26 @@ class Message
         return $this;
     }
 
-    public function getAuteur(): ?User
+    public function getAuthor(): ?User
     {
-        return $this->Auteur;
+        return $this->author;
     }
 
-    public function setAuteur(User $Auteur): self
+    public function setAuthor(User $author): self
     {
-        $this->Auteur = $Auteur;
+        $this->author = $author;
 
         return $this;
     }
 
-    public function getDestinataire(): ?User
+    public function getReceiver(): ?User
     {
-        return $this->Destinataire;
+        return $this->receiver;
     }
 
-    public function setDestinataire(?User $Destinataire): self
+    public function setReceiver(?User $receiver): self
     {
-        $this->Destinataire = $Destinataire;
+        $this->receiver = $receiver;
 
         return $this;
     }

@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Message;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
@@ -19,15 +20,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
+    
+    #[Assert\NotBlank (message:'Le champ Email est obligatoire')]
     #[ORM\Column(length: 180, unique: true)]
     #[Assert\Regex(
-        pattern: "/my-digital-school.[a-z]{2,3}/",
-        match: false,
-        message: 'Votre adresse mail doit terminer par my-digital-school.org ',
+        pattern: "/@my-digital-school.[a-z]{2,3}/",
+        match: true,
+        message: 'Votre adresse mail doit terminer par @my-digital-school.org',
     )]
     private ?string $email = null;
-
     #[ORM\Column]
     private array $roles = [];
 
@@ -39,11 +40,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
-    #[ORM\OneToOne(mappedBy: 'Auteur', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'author', cascade: ['persist', 'remove'])]
     private ?Message $message = null;
 
-    #[ORM\OneToMany(mappedBy: 'Destinataire', targetEntity: Message::class)]
+    #[ORM\OneToMany(mappedBy: 'receiver', targetEntity: Message::class)]
     private Collection $messages;
+
+    public function __toString()
+    {
+        return $this->email;
+    }
 
     public function __construct()
     {
@@ -130,7 +136,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->isVerified = $isVerified;
         return $this;
     }
-    public function getMessage(): ?Message
+
+        public function getMessage(): ?Message
     {
         return $this->message;
     }
@@ -138,8 +145,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setMessage(Message $message): self
     {
         // set the owning side of the relation if necessary
-        if ($message->getAuteur() !== $this) {
-            $message->setAuteur($this);
+        if ($message->getauthor() !== $this) {
+            $message->setauthor($this);
         }
 
         $this->message = $message;
@@ -159,7 +166,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->messages->contains($message)) {
             $this->messages->add($message);
-            $message->setDestinataire($this);
+            $message->setreceiver($this);
         }
 
         return $this;
@@ -169,8 +176,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->messages->removeElement($message)) {
             // set the owning side to null (unless already changed)
-            if ($message->getDestinataire() === $this) {
-                $message->setDestinataire(null);
+            if ($message->getreceiver() === $this) {
+                $message->setreceiver(null);
             }
         }
 
