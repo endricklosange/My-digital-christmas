@@ -10,25 +10,15 @@
   <script type="module" src="js/animation.js"></script>
 {% endblock %}
 {% block body %}
-<div class="container-canvas">
-		<canvas id="canvas"></canvas>
-	</div>
-  <div class="newMessage">
-    <div class="main-card">
-      <img src="img/ab844b1c0ec9bdeb90ab2cfc0b7f2c99-removebg-preview.png" class="img-fluid" alt="...">
-      <h1 style="font-family: quicksand; font-weight: 600;" >Envoi ton message personnalisé</h1>
-      <div class="conteneur col-lg-offset-3 col-lg-7" style="font-family: quicksand;">
 
-      
-         {{ include('message/_form.html.twig') }}
+{% if app.user %}
+    <h1>Create new Message</h1>
+{% if app.user.isVerified == '0' %}
+    <p>Confirme ton email bg</p>
+{% endif %}
 
+{% if app.user.isVerified == '1' %}
+    {{ include('message/_form.html.twig') }}
     <a href="{{ path('app_message_index') }}">back to list</a>
-    
-      </div>
-
-    </div>
-
-
-
-   
+    {% endif %}
 {% endblock %}
