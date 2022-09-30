@@ -11,14 +11,16 @@
 {% endblock %}
 {% block body %}
 
-{% if app.user %}
+  {% if app.user %}
     <h1>Create new Message</h1>
-{% if app.user.isVerified == '0' %}
-    <p>Confirme ton email bg</p>
-{% endif %}
-
-{% if app.user.isVerified == '1' %}
-    {{ include('message/_form.html.twig') }}
-    <a href="{{ path('app_message_index') }}">back to list</a>
+    {% if app.user.isVerified == '0' %}
+      <p>Confirme ton email bg</p>
     {% endif %}
+
+    {% if app.user.isVerified == '1' %}
+      {{ include('message/_form.html.twig') }}
+      <a href="{{ path('app_message_index') }}">back to list</a>
+    {% endif %}
+  {% endif %}
+
 {% endblock %}
