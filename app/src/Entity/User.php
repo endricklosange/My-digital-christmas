@@ -24,7 +24,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank (message:'Le champ Email est obligatoire')]
     #[ORM\Column(length: 180, unique: true)]
     #[Assert\Regex(
-        pattern: "/@my-digital-school.org[a-z]{2,3}/",
+        pattern: "/@my-digital-school.[a-z]{2,3}/",
         match: true,
         message: 'Votre adresse mail doit terminer par @my-digital-school.org',
     )]
@@ -35,7 +35,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      */
-    #[Assert\NotBlank]
     #[ORM\Column]
     private ?string $password = null;
 
