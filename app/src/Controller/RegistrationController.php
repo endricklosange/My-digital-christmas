@@ -61,7 +61,7 @@ class RegistrationController extends AbstractController {
                 $user,
                 $authenticator,
                 $request
-            );
+            );;
         }
 
         return $this->render('registration/register.html.twig', [
@@ -70,22 +70,14 @@ class RegistrationController extends AbstractController {
     }
 
     #[Route('/verify/email', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request, TranslatorInterface $translator, UserRepository $userRepository): Response {
-        $id = $request->get('id');
+    public function verifyUserEmail(Request $request, TranslatorInterface $translator, EntityManagerInterface $em): Response {
+        
 
-        if (null === $id) {
-            return $this->redirectToRoute('app_register');
-        }
-
-        $user = $userRepository->find($id);
-
-        if (null === $user) {
-            return $this->redirectToRoute('app_register');
-        }
-
+            $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+            
         // validate email confirmation link, sets User::isVerified=true and persists
         try {
-            $this->emailVerifier->handleEmailConfirmation($request, $user);
+            $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
 
@@ -93,8 +85,6 @@ class RegistrationController extends AbstractController {
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        dd($user);
-        $user->setIsVerified(true);
         $this->addFlash('success', 'Votre email à été vérifier.');
 
         return $this->redirectToRoute('app_home');
