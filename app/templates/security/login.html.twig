@@ -17,9 +17,7 @@
 	</div>
 	<section class="container d-flex align-items-center py-4 z-index-2">
 		<form method="post">
-			{% if error %}
-				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-			{% endif %}
+			
 
 			{% if app.user %}
 				<div class="mb-3">
@@ -32,6 +30,9 @@
 				<img src="img/ab844b1c0ec9bdeb90ab2cfc0b7f2c99-removebg-preview.png" class="img-fluid w-25" alt="...">
 				<div class="conteneur col-lg-offset-3 col-lg-6">
 					<h1 style="font-family: quicksand; font-weight: 600;" class="fs-4" >MyDigital Christmas</h1>
+					{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
 					<form class="well">
 						<div class="form-group">
 							<label class="pb-2" for="inputEmail" style="font-family: quicksand;" >Email MyDigitalSchool</label>

@@ -23,7 +23,11 @@
 			<img src="{{ asset('img/ab844b1c0ec9bdeb90ab2cfc0b7f2c99-removebg-preview.png') }}" class="img-fluid w-25" alt="...">
 			<h1 style="font-family: quicksand; font-weight: 600;">Envoi ton message personnalisé</h1>
 			<div class="conteneur col-lg-offset-3 col-lg-7" style="font-family: quicksand;">
-
+				{% if app.user %}
+					{% if app.user.isVerified == '0' %}
+      <p class="text-center">Confirme ton email pour envoyé ton sucre d'orge bg</p>
+    {% endif %}
+	{% if app.user.isVerified == '1' %}
 				{{ form_start(form) }}
 				<div class="form-group">
 					{{ form_row(form.receiver, {'attr': {'class': 'form-control border-0 pb-1'}}) }}
@@ -32,9 +36,10 @@
 
 				</div>
 				<div class="d-flex justify-content-center">
-					<button class="btn btn-lg btn-primary rounded-pill mx-auto fs-6">{{ button_label|default('Save') }}</button>
+					<button class="btn btn-lg btn-primary rounded-pill mx-auto fs-6">Go !</button>
 				</div>
 				{{ form_end(form) }}
+		{% endif %}
 
 				{# {{ form_start(registrationForm, {'attr': {'class': 'well'}}) }}
 												<div class="form-group">
@@ -53,5 +58,6 @@
 		</div>
 
 	</div>
+	{% endif %}
 
 {% endblock %}
