@@ -40,8 +40,6 @@ body {
   color: #ffffff;
   font-weight: 600;
   background-color: #ff5959;
-  /* box-shadow: #ff9999 0px 0px 10px; */
-  box-shadow: #ff9999 0px 0px 10px;
   text-transform: uppercase;
   transition: 1s;
 }
