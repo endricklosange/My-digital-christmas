@@ -30,7 +30,7 @@ class MessageController extends AbstractController
     {
         $user = $this->getUser();
         // Si l'utilisateur a deja envoyer un message ou qu'il n'est pas connecter il sera rediriger vers la home
-        if($user->getMessage() || !$user){
+        if(!$user || $user->getMessage()){
             return $this->redirectToRoute('app_home');
         }
         $message = new Message();
