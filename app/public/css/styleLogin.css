@@ -1,11 +1,8 @@
-.login {
+body{
   height: 100vh;
   display: flex;
-  background: linear-gradient(
-    180deg,
-    #fedcdc 62.14%,
-    rgba(217, 217, 217, 0) 100%
-  );
+  background-repeat: no-repeat;
+  justify-content: center;
   flex-direction: row;
   align-items: center;
   overflow: hidden;
