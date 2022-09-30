@@ -5,8 +5,8 @@ window.onload = function () {
   img.src = "img/sapin.png";
   var W = window.innerWidth;
   var H = window.innerHeight;
-  canvas.width = W;
-  canvas.height = H;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
   var red = 254;
   var green = 220;
   var blue = 220;
@@ -53,8 +53,6 @@ window.onload = function () {
   function update() {
     W = window.innerWidth;
     H = window.innerHeight;
-    canvas.width = W;
-    canvas.height = H;
     posx = W/2+Math.sin(-angle)*500;
     posy = H+Math.cos(-angle)*500;
     angle += speed;
@@ -110,3 +108,7 @@ window.onload = function () {
 
   setInterval(draw, 33);
 };
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+})
