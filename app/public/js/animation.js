@@ -53,6 +53,8 @@ window.onload = function () {
   function update() {
     W = window.innerWidth;
     H = window.innerHeight;
+    canvas.width = W;
+    canvas.height = H;
     posx = W/2+Math.sin(-angle)*500;
     posy = H+Math.cos(-angle)*500;
     angle += speed;
@@ -103,7 +105,7 @@ window.onload = function () {
         }
       }
     }
-    document.getElementsByTagName("body")[0].style.background = 'linear-gradient(180deg, rgb('+red+', '+green+', '+blue+') 62.14%,rgba(217, 217, 217,0) 100%)'
+    document.getElementsByTagName("body")[0].style.background = 'linear-gradient(180deg, rgb('+red+', '+green+', '+blue+') 80.14%,rgba(217, 217, 217,0) 100%)'
   }
 
   setInterval(draw, 33);
