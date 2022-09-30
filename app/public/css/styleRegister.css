@@ -1,4 +1,4 @@
-body {
+.register {
     height: 100vh;
     display: flex;
     background: linear-gradient(
@@ -40,7 +40,9 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
   }
-  .btn {
+   .btn {
+    border: none;
+    background: #FF4B4B !important;
     margin-top: 20px;
     margin-bottom: 20px;
   }
